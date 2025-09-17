@@ -58,13 +58,9 @@ public class BoardController {
     }
     @GetMapping("/delete")
     public void deletePost(){}
-
     @PostMapping("/delete")
     public String deletePost(BoardDTO deleteBoardDTO, RedirectAttributes rttr){
-        System.out.println("딜리트 컨트롤러");
-        boardService.deletePostID(deleteBoardDTO);
-        boardService.deletePostTitle(deleteBoardDTO);
-        boardService.deletePostNumber(deleteBoardDTO);
+        boardService.deletePost(deleteBoardDTO);
         rttr.addFlashAttribute("successMessage","삭제에성공하셨습니다.");
         return "redirect:/board/list";
     }
@@ -73,7 +69,6 @@ public class BoardController {
 
     @PostMapping("/delete1")
     public String deletePost1(BoardDTO deleteBoardDTO, RedirectAttributes rttr){
-        System.out.println("딜리트 컨트롤러");
         boardService.deletePostNumber(deleteBoardDTO);
         rttr.addFlashAttribute("successMessage","삭제에성공하셨습니다.");
         return "redirect:/board/list";
@@ -83,7 +78,6 @@ public class BoardController {
 
     @PostMapping("/delete2")
     public String deletePost2(BoardDTO deleteBoardDTO, RedirectAttributes rttr){
-        System.out.println("딜리트 컨트롤러");
         boardService.deletePostTitle(deleteBoardDTO);
         rttr.addFlashAttribute("successMessage","삭제에성공하셨습니다.");
         return "redirect:/board/list";
@@ -93,8 +87,7 @@ public class BoardController {
 
     @PostMapping("/delete3")
     public String deletePost3(BoardDTO deleteBoardDTO, RedirectAttributes rttr){
-        System.out.println("딜리트 컨트롤러");
-        boardService.deletePostTitle(deleteBoardDTO);
+        boardService.deletePostID(deleteBoardDTO);
         rttr.addFlashAttribute("successMessage","삭제에성공하셨습니다.");
         return "redirect:/board/list";
     }
